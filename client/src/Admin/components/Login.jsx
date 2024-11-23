@@ -21,6 +21,9 @@ const Login = () => {
         
             if( data.message !== 'invalid credentails'){
                 navigate("/admin")
+                alert("login success")
+            }else{
+                alert("invalid credenttials")
             }
            
        

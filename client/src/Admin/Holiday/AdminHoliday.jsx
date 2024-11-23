@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 const Admin = () => {
   const [selectedDate, setSelectedDate] = useState('');
@@ -36,7 +37,14 @@ const Admin = () => {
 
   return (
     <div className="d-flex justify-content-center">
-      <div className="mt-5">
+      <div className="d-flex flex-column justify-content-center align-items-center vh-90">
+      <div className="d-flex justify-content-between gap-3 my-5">
+      <Link to='/holiday-admin'><button className="btn btn-primary">+Add Holiday</button></Link>
+      <Link to='/admin'><button className="btn btn-primary">+Add Event</button></Link>  
+      <Link to='/holiday'><button className="btn btn-primary">Holiday data</button></Link>
+      <Link to='/events'><button className="btn btn-primary">Events Data</button></Link>
+       </div>
+      <div className="p-4 border rounded shadow">
         <h1>Holiday Admin </h1>
         
         <form onSubmit={handleSubmit}>
@@ -61,9 +69,10 @@ const Admin = () => {
             required
           />
           <button type="submit" className="btn btn-primary mt-3">
-            Save Date and Event
+            Save Date and Holiday
           </button>
         </form>
+        </div>
       </div>
     </div>
   );

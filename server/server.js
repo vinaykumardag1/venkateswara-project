@@ -80,28 +80,7 @@ app.post("/adminlogin", async (req, res) => {
     }
 });
 
-// app.post('/api/save-date', async (req, res) => {
-//     const { date, event } = req.body;
-  
-//     try {
-//     // Validate input
-//     if (!date || !event) {
-//       return res.status(400).json({ error: 'Both date and event are required' });
-//     }
-//     const dateData=await EventModel.findOne({date:date})
-//     if(!dateData){
-//       res.json("user already used")
-//     }
-//       // Save to database
-      
-//       const newEvent = await EventModel.create({ date:date, event:event });
-//       res.status(200).json({ message: 'Event saved successfully!', data: newEvent });
-    
-//     } catch (error) {
-//       console.error('Error saving event:', error);
-//       res.status(500).json({ error: 'Failed to save event' });
-//     }
-//   });
+
   
 // 
 app.post('/api/save-date', async (req, res) => {

@@ -22,9 +22,10 @@ const Login = () => {
           
 
             if (data.message === 'Login successful') {
+                
                 navigate('/dashboard'); // Navigate to dashboard on successful login
             } else {
-                setError(data.error || 'Invalid credentials'); // Display server error
+                setError('Invalid credentials'); // Display server error
             }
         } catch (err) {
             console.error('Login failed:', err.response?.data || err.message);

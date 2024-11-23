@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Link } from "react-router-dom";
+
 const DataFetchingComponent = () => {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -88,12 +89,16 @@ const DataFetchingComponent = () => {
   return (
     <div className="container">
       
-      <h1 className="text-center">Date and Events</h1>
+      <h1 className="text-center my-5">Date and Events</h1>
+      
       <div className="d-flex justify-content-between">
-      <Link to='/admin'><button className="btn btn-primary">+Add Event</button></Link>
-      <Link to='/holiday-admin'> <button className="btn btn-primary">+Add Holiday</button></Link>
-      </div>
-      <div className="d-flex text-center justify-content-center m-5">
+      <Link to='/holiday-admin'><button className="btn btn-primary">+Add Holiday</button></Link>
+      <Link to='/admin'><button className="btn btn-primary">+Add Event</button></Link>  
+      <Link to='/holiday'><button className="btn btn-primary">Holiday data</button></Link>
+      <Link to='/events'><button className="btn btn-primary">Events Data</button></Link>
+       </div>
+      
+      <div className="d-flex text-center justify-content-center align-items-center m-5">
         <table className="table table-striped">
           <thead>
             <tr>

@@ -41,7 +41,7 @@ const Holiday = () => {
   // Handle edit button click
   const handleEdit = (item) => {
     setEditingItem(item._id); // Set the editing ID
-    setFormData({ date: item.date, event: item.event }); // Pre-fill form with existing data
+    setFormData({ date: item.date, holiday: item.holiday }); // Pre-fill form with existing data
   };
 
   // Handle form input changes
@@ -88,14 +88,20 @@ const Holiday = () => {
   return (
     <div className="container">
       <h1 className="text-center my-5">Date and Holiday</h1>
+      <div className="d-flex justify-content-between">
       <Link to='/holiday-admin'><button className="btn btn-primary">+Add Holiday</button></Link>
+      <Link to='/admin'><button className="btn btn-primary">+Add Event</button></Link>  
+      <Link to='/holiday'><button className="btn btn-primary">Holiday data</button></Link>
+      <Link to='/events'><button className="btn btn-primary">Events Data</button></Link>
+       </div>
+
       <div className="d-flex text-center justify-content-center m-5">
         <table className="table table-striped">
        
           <thead>
             <tr>
               <th scope="col">Date</th>
-              <th scope="col">Event</th>
+              <th scope="col">Holiday</th>
               <th scope="col">Actions</th>
             </tr>
           </thead>
@@ -148,15 +154,15 @@ const Holiday = () => {
                 />
               </div>
               <div className="mb-3">
-                <label htmlFor="event" className="form-label">
-                  Event
+                <label htmlFor="holiday" className="form-label">
+                  Holiday
                 </label>
                 <input
                   type="text"
                   className="form-control"
-                  id="event"
-                  name="event"
-                  value={formData.event}
+                  id="holiday"
+                  name="holiday"
+                  value={formData.holiday}
                   onChange={handleChange}
                 />
               </div>
