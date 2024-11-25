@@ -10,6 +10,7 @@ const Student = () => {
     const [address, setAddress] = useState('');
     const [batch, setBatch] = useState('2023-25'); // Set a default value
     const [section, setSection] = useState('A'); // Set a default value
+ 
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -24,14 +25,15 @@ const Student = () => {
                 batch,
                 section,
             });
-
-            console.log(name, email, dob, batch, section);
-
             if (response.status === 200) {
-                alert('Student data saved successfully!');
+                alert("data saved succesfully")
+                window.location.reload(); 
+             
             } else {
                 alert('Failed to save student data.');
+                
             }
+
         } catch (error) {
             alert(`An error occurred while saving the data: ${error.message}`);
         }
@@ -114,7 +116,7 @@ const Student = () => {
                         <option value="B">B</option>
                         <option value="C">C</option>
                     </select>
-                    <button type="button" onClick={handleSubmit} className="btn btn-primary">
+                    <button type="submit" onClick={handleSubmit} className="btn btn-primary">
                         Submit
                     </button>
                 </form>

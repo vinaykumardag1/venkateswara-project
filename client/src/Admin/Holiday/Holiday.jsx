@@ -68,22 +68,13 @@ const Holiday = () => {
 
   if (loading)
     return (
-      <div className="text-center">
+      <div className="text-center  ">
         <div className="spinner-border" role="status">
-          <span className="visually-hidden">Loading...</span>
+        
         </div>
       </div>
     );
 
-  if (error)
-    return (
-      <div className="text-center">
-        <p>Error: {error}</p>
-        <button className="btn btn-primary" onClick={() => window.location.reload()}>
-          Retry
-        </button>
-      </div>
-    );
 
   return (
     <div className="container">

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import './style.css'
+import './style.css';
+
 const StudentDetails = () => {
   const [api, setApi] = useState([]); // Initialize with an empty array
   const [currentDate, setCurrentDate] = useState('');
@@ -18,40 +19,50 @@ const StudentDetails = () => {
     getData();
   }, []);
 
-  // Get current date in DD/MM/YYYY format
+  // Get current date in DD/MM format
   useEffect(() => {
     const today = new Date();
     const formattedDate = today.toLocaleDateString('en-GB', {
       day: '2-digit',
       month: '2-digit',
-      year: 'numeric',
     });
     setCurrentDate(formattedDate);
   }, []);
 
-  // Utility function to compare only date part of dob
+  // Utility function to format and compare date
   const formatDate = (date) => {
     const d = new Date(date);
     return d.toLocaleDateString('en-GB', {
       day: '2-digit',
       month: '2-digit',
-      year: 'numeric',
     });
   };
 
   return (
-    <div className='birthday-banner '>
-      {api.map((item, index) => (
-        <ul key={index} type='none'>
-         
-          <li className='w-25'>
-            {formatDate(item.dob) === currentDate ? <p> {item.name}</p> : null}
-          </li>
-          <li><a href={item.email}>{item.email}</a>
-          </li>
-        </ul>
-      ))}
-   
+    <div className="birthday-banner container">
+      <h1 className="my-3 text-center">Today's Student Birthdays</h1>
+      <table className="table table-striped">
+        <thead>
+          <tr>
+            <th scope="col">S.NO</th>
+            <th scope="col">Roll No</th>
+            <th scope="col">Name</th>
+            <th scope="col">Email</th>
+          </tr>
+        </thead>
+        <tbody>
+          {api
+            .filter((item) => formatDate(item.dob) === currentDate) // Filter students whose birthday matches current date
+            .map((item, index) => (
+              <tr key={index}>
+                <td>{index + 1}</td>
+                <td>{item.rollNumber}</td>
+                <td>{item.name}</td>
+                <td><a href={`mailto:${item.email}`}>{item.email}</a></td>
+              </tr>
+            ))}
+        </tbody>
+      </table>
     </div>
   );
 };
