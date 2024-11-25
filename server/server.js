@@ -8,7 +8,7 @@ const NewModel=require("./model/User")
 const { MongoClient } = require('mongodb');
 const EventModel=require("./model/Admin");
 const HolidayModel = require('./model/Holiday');
-
+const studentModel=require("./model/student")
 app.use(bodyParser.urlencoded({extended:false}));
 app.use(cors())
 app.use(express.json())
@@ -205,6 +205,35 @@ app.put("/api/holiday/update/:id", async (req, res) => {
     res.status(500).json({ error: err.message });
   }
 });
+
+// 
+app.post("/student-data", async (req, res) => {
+  try {
+      // Validate required fields
+      const { name, email, number, dob, address, batch, section } = req.body;
+
+      if (!name || !email || !number || !dob || !address || !batch || !section) {
+          return res.status(400).json({ error: "All fields are required." });
+      }
+
+      // Save the student data to the database
+      const student_data = new studentModel(req.body);
+      await student_data.save();
+
+      res.status(200).json({ message: "Data saved successfully!" });
+  } catch (error) {
+      console.error("Error saving student data:", error);
+      res.status(500).json({
+          error: "An error occurred while saving the data. Please try again.",
+      });
+  }
+});
+// dob get 
+app.get("/student-data",async (req,res)=>{
+  let data=await studentModel.find({})
+  res.json(data)
+}) 
+
 app.listen(port, () => {
     console.log(`Server is running on port ${port}`);
 });

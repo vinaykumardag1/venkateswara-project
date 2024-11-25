@@ -100,14 +100,16 @@ const Holiday = () => {
        
           <thead>
             <tr>
+              <th scope="col">S.No</th>
               <th scope="col">Date</th>
               <th scope="col">Holiday</th>
               <th scope="col">Actions</th>
             </tr>
           </thead>
           <tbody>
-            {data.map((item) => (
+            {data.map((item,index) => (
               <tr key={item._id}>
+                <td>{index+1}</td>
                 <td className="px-3">{item.date}</td>
                 <td className="px-3">{item.holiday}</td>
                 <td>
