@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import './style.css';
 
 const StudentDetails = () => {
   const [api, setApi] = useState([]); // Initialize with an empty array

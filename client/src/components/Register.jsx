@@ -14,7 +14,6 @@ const Register = () => {
         e.preventDefault(); // Correct method to prevent form submission
 
         try {
-           
             const response = await axios.post(
                 'http://localhost:3000/register',
                 { name:name, email:email, password:password }
