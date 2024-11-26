@@ -10,12 +10,14 @@ import AdminHoliday from './Admin/Holiday/AdminHoliday'
 import Holiday from './Admin/Holiday/Holiday'
 import Student from './Admin/student/student'
 import Events_holidays from './components/events_holidays'
+import Student_Data from './components/Student_Data'
 const App = () => {
   return (
     <div>
       <BrowserRouter>
       <Routes>
         <Route path='/' element={<Dashboard/>}/>
+        <Route path='/student-data' element={<Student_Data/>}/>
         <Route path='/events_holidays' element={<Events_holidays/>}/>
         <Route path='/login' element={<Login/>}/> 
         <Route path='/register' element={<Register/>}/>

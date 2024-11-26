@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-
+import './style.css'
 const StudentDetails = () => {
   const [api, setApi] = useState([]); // Initialize with an empty array
   const [currentDate, setCurrentDate] = useState('');
@@ -40,7 +40,7 @@ const StudentDetails = () => {
   return (
     <div className="birthday-banner container">
       <h1 className="my-3 text-center">Today's Student Birthdays</h1>
-      <table className="table table-striped">
+      <table className="table table-striped student-table">
         <thead>
           <tr>
             <th scope="col">S.NO</th>

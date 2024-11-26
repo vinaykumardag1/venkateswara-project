@@ -2,6 +2,8 @@ import React,{useEffect,useState} from 'react'
 import { BarChart } from "@mui/x-charts/BarChart";
 import axios from "axios";
 import Navbar from './Navbar';
+import Footer from './footer';
+import './style.css'
 const Events_holidays = () => {
     const [holiday, setHoliday] = useState([]);
   const [events, setEvents] = useState([]);
@@ -46,8 +48,8 @@ const Events_holidays = () => {
       </div>
       
     </div>
-    <div className=" my-5 d-flex flex-row gap-4 justify-content-center">
-   <table className="w-50 text-center table table-striped">
+    <div className=" my-5 d-flex flex-row gap-4 justify-content-center ">
+   <table className="w-50 text-center table table-striped student-table">
     <thead>
       <tr>
         <th scope="col">S.no</th>
@@ -67,7 +69,7 @@ const Events_holidays = () => {
       
     </tbody>
    </table>
-   <table className="w-50 text-center table  table-striped">
+   <table className="w-50 text-center table  table-striped student-table">
     <thead>
       <tr>
         <th scope="col">S.no</th>
@@ -89,6 +91,7 @@ const Events_holidays = () => {
    </table>
    </div>
    </div>
+   <Footer/>
     </>
   )
 }

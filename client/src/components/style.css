@@ -1,0 +1,25 @@
+.navbar{
+    position: sticky;
+    top: 0;
+    z-index: 5;
+    background: #ffffff;
+}
+.nav-link{
+    color: #c32c30 !important;
+    text-decoration: none;
+    font-size: 20px;
+}
+.nav-link:hover{
+    color: #fce25a !important;
+}
+.footer{
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    background-color: #240a0b;
+    color:  #8b7d7d;
+   
+}
+.student-table{
+    margin-bottom: 200px;
+}
