@@ -19,7 +19,6 @@ const NewSchema = new mongoose.Schema({
     dob: {
         type: Date,
         required: true,
-      
     },
     address: {
         type: String,
@@ -36,37 +35,50 @@ const NewSchema = new mongoose.Schema({
     rollNumber: {
         type: String,
         unique: true, // Ensure roll numbers are unique
-    }
+    },
 });
 
 // Pre-save hook to generate roll number
 NewSchema.pre("save", async function (next) {
     if (!this.rollNumber) {
         try {
-            // Create a unique six-digit roll number
-            const lastStudent = await mongoose
-                .model("students", NewSchema)
+            // Fetch the last student in the same batch and section
+            const lastStudent = await this.constructor
                 .findOne({ batch: this.batch, section: this.section })
-                .sort({ rollNumber: -1 }); // Sort by rollNumber descending
+                .sort({ rollNumber: -1 });
 
             let lastRollNumber = 0;
             if (lastStudent?.rollNumber) {
-                // Extract the last numeric part of the roll number
-                lastRollNumber = parseInt(lastStudent.rollNumber.slice(-3)) || 0;
+                // Extract the numeric part of the roll number
+                const match = lastStudent.rollNumber.match(/\d+$/);
+                lastRollNumber = match ? parseInt(match[0], 10) : 0;
             }
 
             // Generate the new roll number
-            const newRollNumber = `SVCNMCA-${this.batch}-${(lastRollNumber + 1).toString().padStart(3, "0")}`;
+            let newRollNumber = `SVCNMCA-${this.batch}-${(lastRollNumber + 1).toString().padStart(3, "0")}`;
 
+            // Check if the roll number already exists
+            let existingStudent = await this.constructor.findOne({ rollNumber: newRollNumber });
+            
+            // Keep generating new roll numbers if there is a conflict
+            while (existingStudent) {
+                lastRollNumber += 1;
+                newRollNumber = `SVCNMCA-${this.batch}-${(lastRollNumber + 1).toString().padStart(3, "0")}`;
+                existingStudent = await this.constructor.findOne({ rollNumber: newRollNumber });
+            }
+
+            // Assign the unique roll number
             this.rollNumber = newRollNumber;
             next();
         } catch (err) {
+            console.error("Error generating roll number:", err.message);
             next(err);
         }
     } else {
         next();
     }
 });
+
 
 // Create the model
 const studentModel = mongoose.model("students", NewSchema);

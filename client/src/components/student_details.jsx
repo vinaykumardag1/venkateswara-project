@@ -1,10 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import './style.css'
+import './style.css';
+import Carousel from 'react-multi-carousel';
+import 'react-multi-carousel/lib/styles.css';
+
 const StudentDetails = () => {
   const [api, setApi] = useState([]); // Initialize with an empty array
   const [currentDate, setCurrentDate] = useState('');
-  
+
   // Fetching student data from the server
   useEffect(() => {
     const getData = async () => {
@@ -28,7 +31,7 @@ const StudentDetails = () => {
     setCurrentDate(formattedDate);
   }, []);
 
-  // Utility function to format and compare date
+  // Utility function to format and compare dates
   const formatDate = (date) => {
     const d = new Date(date);
     return d.toLocaleDateString('en-GB', {
@@ -37,32 +40,53 @@ const StudentDetails = () => {
     });
   };
 
+  // Carousel responsiveness settings
+  const responsive = {
+    desktop: {
+      breakpoint: { max: 3000, min: 1024 },
+      items: 1,
+    },
+    tablet: {
+      breakpoint: { max: 1024, min: 464 },
+      items: 1,
+    },
+    mobile: {
+      breakpoint: { max: 464, min: 0 },
+      items: 1,
+    },
+  };
+
   return (
-    <div className="birthday-banner container">
-      <h1 className="my-3 text-center">Today's Student Birthdays</h1>
-      <table className="table table-striped student-table">
-        <thead>
-          <tr>
-            <th scope="col">S.NO</th>
-            <th scope="col">Roll No</th>
-            <th scope="col">Name</th>
-            <th scope="col">Email</th>
-          </tr>
-        </thead>
-        <tbody>
-          {api
-            .filter((item) => formatDate(item.dob) === currentDate) // Filter students whose birthday matches current date
-            .map((item, index) => (
-              <tr key={index}>
-                <td>{index + 1}</td>
-                <td>{item.rollNumber}</td>
-                <td>{item.name}</td>
-                <td><a href={`mailto:${item.email}`}>{item.email}</a></td>
-              </tr>
-            ))}
-        </tbody>
-      </table>
+    <>
+    <h1 className="my-3 text-center">Today's Student Birthdays</h1>
+    <div className="birthday-banner ">
+      <p style={{color:"wheat",textAlign:'center',fontSize:'50px'}}>HAPPY BIRTHDAY</p>
+      <Carousel
+        responsive={responsive}
+        arrows={false}
+        swipeable={true}
+        autoPlay={true} // Enable autoplay
+        autoPlaySpeed={4000} // Set autoplay speed (in milliseconds)
+        infinite={true} // Enable infinite looping
+        autoFocus={true}
+       pauseOnHover={true}
+       transitionDuration={2000}
+      >
+       
+        {api
+          .filter((item) => formatDate(item.dob) === currentDate) // Filter students whose birthday matches current date
+          .map((item, index) => (
+            <div className='d-flex  justify-content-center'  key={index}>
+          
+                <h2 className="text-light">{item.name}</h2>
+               
+              
+          </div>
+          ))}
+         
+      </Carousel>
     </div>
+    </>
   );
 };
 

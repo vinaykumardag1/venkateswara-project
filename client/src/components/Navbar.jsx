@@ -9,7 +9,7 @@ const Navbar = () => {
       <div className='navbar w-100 d-flex   align-items-center'>
         <a className="navbar-brand" href='/'>
         
-        <img src={Logo} alt='SVCN College logo'/>
+        <img src={Logo} alt='SVCN College logo' className='w-50'/>
         </a>
         <ul type="none" className='d-flex gap-5'>
             <li><Link to='/' className='nav-link'>Home</Link></li>

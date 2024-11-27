@@ -58,7 +58,7 @@ app.post("/adminlogin", async (req, res) => {
     try {
       // Connect to the MongoDB server
       await client.connect();
-      console.log("Connected to MongoDB");
+    
   
       // Get the database and collection
       const db = client.db("register");
@@ -209,25 +209,26 @@ app.put("/api/holiday/update/:id", async (req, res) => {
 // 
 app.post("/student-data", async (req, res) => {
   try {
-      // Validate required fields
       const { name, email, number, dob, address, batch, section } = req.body;
 
+      // Check if all fields are present
       if (!name || !email || !number || !dob || !address || !batch || !section) {
           return res.status(400).json({ error: "All fields are required." });
       }
 
-      // Save the student data to the database
+      // Save to database
       const student_data = new studentModel(req.body);
       await student_data.save();
 
       res.status(200).json({ message: "Data saved successfully!" });
   } catch (error) {
-      console.error("Error saving student data:", error);
+      console.error("Error saving student data:", error.message);
       res.status(500).json({
           error: "An error occurred while saving the data. Please try again.",
       });
   }
 });
+
 // dob get 
 app.get("/student-data",async (req,res)=>{
   let data=await studentModel.find({})

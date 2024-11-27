@@ -1,5 +1,5 @@
 import React,{useEffect,useState} from 'react'
-import { BarChart } from "@mui/x-charts/BarChart";
+
 import axios from "axios";
 import Navbar from './Navbar';
 import Footer from './footer';
@@ -28,26 +28,7 @@ const Events_holidays = () => {
         <Navbar/>
        <div className="container">
      
-      <div className="d-flex  justify-content-center">
       
-     <div>
-      <h1 className="text-center my-3">Dashboard</h1>  {/* Bar Chart */}
-      <BarChart
-        xAxis={[{ scaleType: "band", data: ["Holiday and Events"] }]}
-        series={[{ data: [holiday.length]},{ data:[events.length] }]}
-        height={300}
-        width={500}
-      />
-
-      
-     <ul type="square" className="d-flex gap-5">
-      <li style={{color:"#02b2af"}}>Holidays: {holiday.length}</li>
-      <li style={{color:"#2e96ff"}}>Events: {events.length}</li>
-     </ul>
-        
-      </div>
-      
-    </div>
     <div className=" my-5 d-flex flex-row gap-4 justify-content-center ">
    <table className="w-50 text-center table table-striped student-table">
     <thead>

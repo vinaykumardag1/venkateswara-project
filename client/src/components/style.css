@@ -23,3 +23,39 @@
 .student-table{
     margin-bottom: 200px;
 }
+.birthday-banner {
+   padding: 150px 0px;
+    margin-bottom: 200px;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    background-image: url('https://png.pngtree.com/background/20230619/original/pngtree-background-for-happy-birthday-banner-design-with-lots-of-bubbles-picture-image_3762069.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+  
+  .card {
+    background: #ffffff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 15px;
+    text-align: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  .card-title {
+    font-size: 1.25rem;
+    color: #333;
+  }
+  
+  .card-text {
+    font-size: 1rem;
+    color: #555;
+  }
+  
+  .text-primary {
+    color: #007bff;
+    text-decoration: none;
+  }
+
+  

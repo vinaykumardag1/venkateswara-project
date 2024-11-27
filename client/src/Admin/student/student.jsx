@@ -20,7 +20,7 @@ const Student = () => {
                 name,
                 email,
                 number,
-                dob, // Correct key for backend
+                dob, 
                 address,
                 batch,
                 section,
