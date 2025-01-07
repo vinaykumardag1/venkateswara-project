@@ -60,7 +60,7 @@ const StudentDetails = () => {
     <>
     <h1 className="my-3 text-center">Today's Student Birthdays</h1>
     <div className="birthday-banner ">
-      <p style={{color:"wheat",textAlign:'center',fontSize:'50px'}}>HAPPY BIRTHDAY</p>
+      <p style={{color:"wheat",textAlign:'center',fontSize:'50px',fontWeight:"bolder"}}>HAPPY BIRTHDAY</p>
       <Carousel
         responsive={responsive}
         arrows={false}

@@ -74,8 +74,6 @@ const Holiday = () => {
         </div>
       </div>
     );
-
-
   return (
     <div className="container">
       <h1 className="text-center my-5">Date and Holiday</h1>

@@ -12,7 +12,7 @@ const studentModel=require("./model/student")
 app.use(bodyParser.urlencoded({extended:false}));
 app.use(cors())
 app.use(express.json())
-let uri='mongodb://localhost:27017/register'
+let uri='mongodb://127.0.0.1:27017/register'
 mongoose.connect(uri)
          .then(()=>console.log("mongodb is connected"))
          .catch(err=>console.log(err))
