@@ -30,7 +30,7 @@ app.get("/",(req,res)=>{
 app.post('/login', async (req, res) => {
     const { email, password } = req.body;
     try {
-        // Find the user by email
+       
         const user = await NewModel.findOne({ email });
 
         if (!user) {
