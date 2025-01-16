@@ -54,7 +54,6 @@ const Student_Data = () => {
   // Filter data based on section and batch
   const filterData = (section, batch) => {
     let filtered = api;
-
     if (section) {
       filtered = filtered.filter((item) => item.section === section);
     }
