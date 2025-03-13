@@ -1,9 +1,9 @@
-.navbar{
+/* .navbar{
     position: sticky;
     top: 0;
     z-index: 5;
     background: #ffffff;
-}
+} */
 .nav-link{
     color: #c32c30 !important;
     text-decoration: none;
@@ -12,14 +12,14 @@
 .nav-link:hover{
     color: #fce25a !important;
 }
-.footer{
+/* .footer{
     position: fixed;
     bottom: 0;
     width: 100%;
     background-color: #240a0b;
     color:  #8b7d7d;
    
-}
+} */
 .student-table{
     margin-bottom: 200px;
 }
@@ -29,7 +29,7 @@
     background-color: #f9f9f9;
     border-radius: 10px;
     background-image: url('https://png.pngtree.com/background/20230619/original/pngtree-background-for-happy-birthday-banner-design-with-lots-of-bubbles-picture-image_3762069.jpg');
-    background-size: cover;
+    background-size: contain;
     background-position: center;
     background-repeat: no-repeat;
   }

@@ -229,7 +229,7 @@ app.post("/student-data", async (req, res) => {
   }
 });
 
-// dob get 
+
 app.get("/student-data",async (req,res)=>{
   let data=await studentModel.find({})
   res.json(data)

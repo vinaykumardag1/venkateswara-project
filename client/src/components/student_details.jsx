@@ -74,13 +74,10 @@ const StudentDetails = () => {
       >
        
         {api
-          .filter((item) => formatDate(item.dob) === currentDate) // Filter students whose birthday matches current date
+          .filter((item) => formatDate(item.dob) === currentDate) 
           .map((item, index) => (
             <div className='d-flex  justify-content-center'  key={index}>
-          
-                <h2 className="text-light">{item.name}</h2>
-               
-              
+                <h2 className="text-light">{item.name}</h2>              
           </div>
           ))}
          
