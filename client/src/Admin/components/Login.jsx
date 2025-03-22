@@ -9,16 +9,13 @@ const Login = () => {
     const navigate = useNavigate();
 
     const submit = async (e) => {
-        e.preventDefault(); // Prevent default form submission behavior
-
-        
-            // Send POST request to login endpoint
+        e.preventDefault();           
             const { data } = await axios.post('http://localhost:3000/adminlogin', {
                 username: username,
                 password: password,
             });
 
-        
+       
             if( data.message !== 'invalid credentails'){
                 navigate("/admin")
                 alert("login success")
